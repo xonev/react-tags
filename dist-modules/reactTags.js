@@ -8,7 +8,7 @@ var _require = require('react-dnd');
 
 var DragDropContext = _require.DragDropContext;
 
-var HTML5Backend = require('react-dnd-html5-backend');
+var HTML5Backend = require('react-dnd/modules/backends/HTML5');
 
 // Constants
 var Keys = {
@@ -45,7 +45,7 @@ var ReactTags = React.createClass({
     },
     componentDidMount: function componentDidMount() {
         if (this.props.autofocus) {
-            this.refs.input.focus();
+            this.refs.input.getDOMNode().focus();
         }
     },
     getInitialState: function getInitialState() {
@@ -143,7 +143,7 @@ var ReactTags = React.createClass({
         }
     },
     addTag: function addTag(tag) {
-        var input = this.refs.input;
+        var input = this.refs.input.getDOMNode();
 
         // call method to add
         this.props.handleAddition(tag);
